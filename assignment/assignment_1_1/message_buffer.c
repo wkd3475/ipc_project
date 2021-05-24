@@ -23,7 +23,7 @@ int init_buffer(MessageBuffer **buffer) {
 
 int attach_buffer(MessageBuffer **buffer) {
     /*---------------------------------------*/
-	/* TODO 2 : attach buffer                */
+    /* TODO 2 : attach buffer                */
     /* do not consider "no buffer situation" */
     
     {}
@@ -106,7 +106,7 @@ int is_empty(MessageBuffer buffer) {
 
 int is_full(MessageBuffer buffer) {
     /*---------------------------------------*/
-	/* TODO 6 : is full?                     */
+    /* TODO 6 : is full?                     */
     
     {}
 
