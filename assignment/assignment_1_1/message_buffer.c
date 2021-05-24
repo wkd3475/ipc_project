@@ -10,12 +10,12 @@ void *memory_segment=NULL;
 
 int init_buffer(MessageBuffer **buffer) {
     /*---------------------------------------*/
-	/* TODO 1 : init buffer                  */
+    /* TODO 1 : init buffer                  */
 
     {}
 
     /* TODO 1 : END                          */
-	/*---------------------------------------*/
+    /*---------------------------------------*/
 
     printf("init buffer\n");
     return 0;
@@ -29,7 +29,7 @@ int attach_buffer(MessageBuffer **buffer) {
     {}
 
     /* TODO 2 : END                          */
-	/*---------------------------------------*/
+    /*---------------------------------------*/
 
     printf("attach buffer\n");
     printf("\n");
@@ -68,12 +68,12 @@ int produce(MessageBuffer **buffer, int sender_id, char *data) {
     }
 
     /*---------------------------------------*/
-	/* TODO 3 : produce message              */
+    /* TODO 3 : produce message              */
     
     {}
 
     /* TODO 3 : END                          */
-	/*---------------------------------------*/
+    /*---------------------------------------*/
 
     printf("produce message\n");
     return 0;
@@ -85,23 +85,23 @@ int consume(MessageBuffer **buffer, Message **message) {
     }
 
     /*---------------------------------------*/
-	/* TODO 4 : consume message              */
+    /* TODO 4 : consume message              */
     
     {}
 
     /* TODO 4 : END                          */
-	/*---------------------------------------*/
+    /*---------------------------------------*/
     return 0;
 }
 
 int is_empty(MessageBuffer buffer) {
     /*---------------------------------------*/
-	/* TODO 5 : is empty?                    */
+    /* TODO 5 : is empty?                    */
     
     {}
 
     /* TODO 5 : END                          */
-	/*---------------------------------------*/
+    /*---------------------------------------*/
 }
 
 int is_full(MessageBuffer buffer) {
@@ -111,5 +111,5 @@ int is_full(MessageBuffer buffer) {
     {}
 
     /* TODO 6 : END                          */
-	/*---------------------------------------*/
+    /*---------------------------------------*/
 }
