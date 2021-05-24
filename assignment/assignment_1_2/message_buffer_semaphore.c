@@ -59,7 +59,7 @@ void s_quit() {
 }
 
 /*---------------------------------------------*/
-/* TODO 4 : use s_quit() and s_wait()          */
+/* TODO 3 : use s_quit() and s_wait()          */
 /* (1) clone from assignment 1-1 !!!           */
 /* (2) use semaphore                           */
 /* (3) report explanation (ex. 2020020000.pdf) */
