@@ -15,23 +15,23 @@ union semun sem_union;
 
 void init_sem() {
     /*---------------------------------------*/
-	/* TODO 1 : init semaphore               */
+    /* TODO 1 : init semaphore               */
 
     {}
 
     /* TODO 1 : END                          */
-	/*---------------------------------------*/
+    /*---------------------------------------*/
     printf("init semid : %d\n", semid);
 }
 
 void destroy_sem() {
     /*---------------------------------------*/
-	/* TODO 2 : destroy semaphore            */
+    /* TODO 2 : destroy semaphore            */
 
     {}
 
     /* TODO 2 : END                          */
-	/*---------------------------------------*/
+    /*---------------------------------------*/
 }
 
 void s_wait() {
