@@ -7,6 +7,12 @@
 #define SHM_KEY 4321
 #define SEM_KEY 4321
 
+union semun {
+    int val;
+    struct semid_ds *buf;
+    unsigned short *array;
+};
+
 void s_wait(int semid) {
     struct sembuf buf;
     buf.sem_num = 0;
@@ -50,12 +56,12 @@ int main(){
     if ((semid = semget(SEM_KEY, 1, IPC_CREAT|IPC_EXCL|0666)) == -1) {
         // try as a client
         if ((semid = semget(SEM_KEY, 0, 0)) == -1) return -1;
+    } else {
+        sem_union.val = 1;
+        semctl(semid, 0, SETVAL, sem_union);
     }
 
     printf("semid : %d\n", semid);
-
-    sem_union.val = 1;
-    semctl(semid, 0, SETVAL, sem_union);
 
     num = (int*)memory_segment;
 

@@ -4,6 +4,12 @@
 #include <sys/types.h>
 #include <stdio.h>
 
+union semun {
+    int val;
+    struct semid_ds *buf;
+    unsigned short *array;
+};
+
 int main(){
     int shmid;
     int *num;

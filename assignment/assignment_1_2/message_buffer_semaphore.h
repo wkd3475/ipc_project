@@ -2,6 +2,12 @@
 #define SHM_KEY 54321
 #define BUFFER_SIZE 10
 
+union semun {
+    int val;
+    struct semid_ds *buf;
+    unsigned short *array;
+};
+
 typedef struct {
     int sender_id;
     char data[101];
