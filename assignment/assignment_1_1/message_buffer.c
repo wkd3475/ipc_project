@@ -12,7 +12,19 @@ int init_buffer(MessageBuffer **buffer) {
     /*---------------------------------------*/
     /* TODO 1 : init buffer                  */
 
-    {}
+    if ((shmid = shmget(KEY, sizeof(MessageBuffer), IPC_CREAT|0666)) == -1) {
+        printf("shmget error!\n\n");
+        return -1;
+    }
+
+    if ((memory_segment = shmat(shmid, NULL, 0)) == (void*)-1) {
+        printf("shmat error!\n\n");
+        return -1;
+    }
+
+    (*buffer) = (MessageBuffer*)memory_segment;
+    (*buffer)->in = 0;
+    (*buffer)->out = 0;
 
     /* TODO 1 : END                          */
     /*---------------------------------------*/
@@ -26,7 +38,17 @@ int attach_buffer(MessageBuffer **buffer) {
     /* TODO 2 : attach buffer                */
     /* do not consider "no buffer situation" */
     
-    {}
+    if ((shmid = shmget(KEY, sizeof(MessageBuffer), IPC_CREAT|0666)) == -1) {
+        printf("shmget error!\n\n");
+        return -1;
+    }
+
+    if ((memory_segment = shmat(shmid, NULL, 0)) == (void*)-1) {
+        printf("shmat error!\n\n");
+        return -1;
+    }
+
+    *buffer = (MessageBuffer*)memory_segment;
 
     /* TODO 2 : END                          */
     /*---------------------------------------*/
@@ -70,7 +92,9 @@ int produce(MessageBuffer **buffer, int sender_id, char *data) {
     /*---------------------------------------*/
     /* TODO 3 : produce message              */
     
-    {}
+    (*buffer)->messages[(*buffer)->in].sender_id = sender_id;
+    memcpy((*buffer)->messages[(*buffer)->in].data, data, sizeof(char)*strlen(data));
+    (*buffer)->in = ((*buffer)->in + 1) % BUFFER_SIZE;
 
     /* TODO 3 : END                          */
     /*---------------------------------------*/
@@ -87,7 +111,8 @@ int consume(MessageBuffer **buffer, Message **message) {
     /*---------------------------------------*/
     /* TODO 4 : consume message              */
     
-    {}
+    *message = &(*buffer)->messages[(*buffer)->out];
+    (*buffer)->out = ((*buffer)->out + 1) % BUFFER_SIZE;
 
     /* TODO 4 : END                          */
     /*---------------------------------------*/
@@ -98,7 +123,10 @@ int is_empty(MessageBuffer buffer) {
     /*---------------------------------------*/
     /* TODO 5 : is empty?                    */
     
-    {}
+    if (buffer.in == buffer.out) {
+        return 1;
+    }
+    return 0;
 
     /* TODO 5 : END                          */
     /*---------------------------------------*/
@@ -108,7 +136,10 @@ int is_full(MessageBuffer buffer) {
     /*---------------------------------------*/
     /* TODO 6 : is full?                     */
     
-    {}
+    if ((buffer.in + 1) % BUFFER_SIZE == buffer.out) {
+        return 1;
+    }
+    return 0;
 
     /* TODO 6 : END                          */
     /*---------------------------------------*/
