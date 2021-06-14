@@ -20,10 +20,10 @@ void init_sem() {
     if ((semid = semget(SEM_KEY, 1, IPC_CREAT|IPC_EXCL|0666)) == -1) {
         // try as a client
         if ((semid = semget(SEM_KEY, 0, 0)) == -1) return ;
+    } else {
+        sem_union.val = 1;
+        semctl(semid, 0, SETVAL, sem_union);
     }
-
-    sem_union.val = 1;
-    semctl(semid, 0, SETVAL, sem_union);
 
     /* TODO 1 : END                          */
     /*---------------------------------------*/
